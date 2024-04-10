@@ -31,7 +31,7 @@ def visualize_data():
     fig.update_xaxes(showgrid=False)
     fig.update_yaxes(showgrid=False)
     #fig.show()
-    #fig.write_image(f"Heatmap.jpg")
+    fig.write_image(f"Heatmap.jpg")
     for categorical_feature in categorical_features:
         fig = px.histogram(data, x=categorical_feature)
         fig.update_layout(template='plotly_dark')
@@ -39,7 +39,7 @@ def visualize_data():
         fig.update_yaxes(showgrid=False)
         #a.append(fig)
         #fig.show()
-        #fig.write_image(f"histogram_{categorical_feature}.jpg")
+        fig.write_image(f"histogram_{categorical_feature}.jpg")
     for numerical_feature in numerical_features:
         fig = px.box(data, y=numerical_feature)
         fig.update_layout(template='plotly_dark')
@@ -47,7 +47,7 @@ def visualize_data():
         fig.update_yaxes(showgrid=False,zeroline=True,zerolinewidth=4)
         #a.append(fig)
         #fig.show()
-        #fig.write_image(f"boxplot_{numerical_feature}.jpg")
+        fig.write_image(f"boxplot_{numerical_feature}.jpg")
     return data
 
 visualize_data()
