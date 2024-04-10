@@ -11,7 +11,7 @@ import io
 from PIL import Image
 
 def visualize_data():
-    data = preprocess_data()
+    data, cat_features = preprocess_data()
     categorical_features = data.select_dtypes("object").columns
     numerical_features = data.select_dtypes("number").columns
     data_num = data.drop(list(categorical_features),axis=1)
