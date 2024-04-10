@@ -1,23 +1,16 @@
 from data_preprocess import preprocess_data
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import LabelEncoder
+from sklearn import preprocessing
 
 def feature_engineer():
-    data = preprocess_data()
+    data, categorical_features = preprocess_data()
+    print(data['property_damage'].value_counts())
+    print(data['police_report_available'].value_counts())
     # Label Encoding
-    le = LabelEncoder()
-    le_count = 0
-    # Iterate through the columns
-    for col in data:
-        if data[col].dtype == 'object':
-            # If 2 or fewer unique categories
-            if len(list(data[col].unique())) <= 2:
-                le.fit(data[col])
-                data[col] = le.transform(data[col])
-                le_count += 1     
-    print('%d columns were label encoded.' % le_count)
-
+    label_encoder = preprocessing.LabelEncoder() 
+    for i in categorical_features:
+        data[i]= label_encoder.fit_transform(data[i]) 
     # Outlier Detection
     outlier_columns = ['property_claim', 'total_claim_amount', 'umbrella_limit', 'policy_annual_premium']
     for col in outlier_columns:
