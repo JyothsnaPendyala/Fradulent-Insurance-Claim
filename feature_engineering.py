@@ -43,6 +43,6 @@ def feature_engineer():
     data_balanced = pd.concat([fraudulent_over,notfraudulent], axis=0)
     data_balanced['fraud_reported'].groupby(data_balanced['fraud_reported']).count()
     print(data_balanced['fraud_reported'].value_counts())
-    data_balanced.to_csv('fraudulent_insurance_claim.csv')
+    data_balanced.to_csv('fraudulent_insurance_claim.csv',index=False)
 
 feature_engineer()
