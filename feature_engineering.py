@@ -6,7 +6,7 @@ from sklearn.preprocessing import LabelEncoder
 def feature_engineer():
     data = preprocess_data()
     # Label Encoding
-    le = LabelEncoder()
+    '''le = LabelEncoder()
     le_count = 0
     # Iterate through the columns
     for col in data:
@@ -16,7 +16,7 @@ def feature_engineer():
                 le.fit(data[col])
                 data[col] = le.transform(data[col])
                 le_count += 1     
-    print('%d columns were label encoded.' % le_count)
+    print('%d columns were label encoded.' % le_count)'''
 
     # Outlier Detection
     outlier_columns = ['property_claim', 'total_claim_amount', 'umbrella_limit', 'policy_annual_premium']
